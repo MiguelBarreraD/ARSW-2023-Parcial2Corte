@@ -3,9 +3,11 @@ package edu.eci.arsw.myrestaurant.beans.impl.colombia;
 import edu.eci.arsw.myrestaurant.model.RestaurantProduct;
 import edu.eci.arsw.myrestaurant.beans.TaxesCalculator;
 import edu.eci.arsw.myrestaurant.model.ProductType;
+
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-
+@Component("TaxesCalculator2016ColTributaryReform")
 public class TaxesCalculator2016ColTributaryReform implements TaxesCalculator {
 
 	@Override

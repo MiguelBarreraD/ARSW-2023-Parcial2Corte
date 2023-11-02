@@ -5,14 +5,22 @@ import edu.eci.arsw.myrestaurant.model.Order;
 import edu.eci.arsw.myrestaurant.model.RestaurantProduct;
 import edu.eci.arsw.myrestaurant.beans.BillCalculator;
 import edu.eci.arsw.myrestaurant.model.ProductType;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-public class RestaurantOrderServicesStub implements RestaurantOrderServices {
+@Service
+public class RestaurantOrderServicesStub implements RestaurantOrderServices  {
 
-    
+    @Autowired
+    @Qualifier("BasicBillCalculator")
     BillCalculator calc = null;
 
     public RestaurantOrderServicesStub() {
@@ -30,6 +38,12 @@ public class RestaurantOrderServicesStub implements RestaurantOrderServices {
             return tableOrders.get(tableNumber);
         }
     }
+    
+    @Override
+    public List<Order> getAllOrders() {
+        return new ArrayList<>(tableOrders.values());
+    }
+
 
     @Override
     public Set<String> getAvailableProductNames() {
